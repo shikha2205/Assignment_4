@@ -1,0 +1,32 @@
+class Solution {
+    //boolean flag=true;
+    public boolean isBalanced(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        boolean leftsubtreebalanced=isBalanced(root.left);
+        boolean rightsubtreebalanced=isBalanced(root.right);
+
+        int leftheight=maxheight(root.left);
+        int rightheight=maxheight(root.right);
+        return Math.abs(leftheight-rightheight)<=1&&leftsubtreebalanced&&rightsubtreebalanced;
+      
+        // maxheight(root);
+        //     return flag;
+        
+        
+    }
+    public int maxheight(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int lh=maxheight(root.left);
+        int rh=maxheight(root.right);
+    //     int height=Math.abs(lh-rh);
+    //    if(height>1){
+    //     flag=false;
+    //    }
+        
+        return 1+Math.max(lh,rh) ;  
+    }
+}
